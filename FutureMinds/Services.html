@@ -1,169 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FutureMindz - Services</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./ProjectStyles.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="./ProjectStyles.css" rel="stylesheet" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0; /* Remove default margin */
-            background-color: #fff;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin: 20px 0;
-        }
-        .service {
-            background: #fff;
-            margin: 20px 10%; /* Set left/right margin to 10% */
-            padding: 20px;
-            border-radius: 35px; /* Increased border radius */
-            box-shadow: none; /* No shadow initially */
-            transition: box-shadow 0.3s;
-            display: flex; /* Flexbox for zigzag layout */
-            align-items: center;
-            line-height: 1.8; /* Increased line spacing */
-            min-height: 250px; /* Set a consistent minimum height for all services */
-            position: relative; /* For positioning the invisible line */
-        }
-        .service:hover {
-            box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Box shadow on hover */
-        }
-        .service:nth-child(even) {
-            flex-direction: row-reverse; /* Zigzag effect for even items */
-        }
-        .service img {
-            width: 300px; /* Doubled the width for images */
-            margin: 10px; /* Add margin around images */
-            border-radius: 10px; /* Round image corners */
-        }
-        .service::after {
-            content: ""; /* Empty content for the invisible line */
-            display: block;
-            height: 0; /* No height, making it invisible */
-            border-top: 1px solid transparent; /* Invisible border */
-            margin: 20px 0; /* Spacing for the invisible line */
-        }
-        h2 {
-            color: black; /* Heading color */
-            font-weight: bold; /* Bolder text */
-            text-transform: uppercase; /* Capitalize text */
-        }
-    </style>
-</head>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0; /* Remove default margin */
+        background-color: #fff;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin: 20px 0;
+      }
+      .service {
+        background: #fff;
+        margin: 20px 10%; /* Set left/right margin to 10% */
+        padding: 20px;
+        border-radius: 35px; /* Increased border radius */
+        box-shadow: none; /* No shadow initially */
+        transition: box-shadow 0.3s;
+        display: flex; /* Flexbox for zigzag layout */
+        align-items: center;
+        line-height: 1.8; /* Increased line spacing */
+        min-height: 250px; /* Set a consistent minimum height for all services */
+        position: relative; /* For positioning the invisible line */
+      }
+      .service:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow on hover */
+      }
+      .service:nth-child(even) {
+        flex-direction: row-reverse; /* Zigzag effect for even items */
+      }
+      .service img {
+        width: 300px; /* Doubled the width for images */
+        margin: 10px; /* Add margin around images */
+        border-radius: 10px; /* Round image corners */
+      }
+      .service::after {
+        content: ""; /* Empty content for the invisible line */
+        display: block;
+        height: 0; /* No height, making it invisible */
+        border-top: 1px solid transparent; /* Invisible border */
+        margin: 20px 0; /* Spacing for the invisible line */
+      }
+      h2 {
+        color: black; /* Heading color */
+        font-weight: bold; /* Bolder text */
+        text-transform: uppercase; /* Capitalize text */
+      }
 
-<body>
+      /* Tablet Styles */
+      @media (max-width: 768px) {
+        body {
+          padding: 0 10px; /* Reduce padding on body */
+        }
+
+        h1 {
+          font-size: 24px; /* Slightly smaller heading size */
+        }
+
+        .service {
+          margin: 20px 5%; /* Reduced margins for better fit */
+          padding: 15px; /* Reduced padding */
+          flex-direction: column; /* Stack elements in service */
+          align-items: center; /* Center items */
+        }
+
+        .service img {
+          width: 100%; /* Make images responsive */
+          max-width: 250px; /* Limit max width for images */
+          margin: 10px 0; /* Margin around images */
+        }
+
+        h2 {
+          font-size: 20px; /* Adjust heading size */
+        }
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 480px) {
+        body {
+          padding: 0 5px; /* Further reduce padding */
+        }
+
+        h1 {
+          font-size: 20px; /* Smaller heading size */
+        }
+
+        .service {
+          margin: 15px 0; /* Margin adjustments for mobile */
+          padding: 10px; /* Further reduced padding */
+        }
+
+        .service img {
+          width: 100%; /* Make images fully responsive */
+          max-width: 200px; /* Limit max width for mobile */
+        }
+
+        h2 {
+          font-size: 18px; /* Smaller heading size */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./Home.html">
-                <img src="./Assets/FuturemindzLogo.svg" alt="Futuremindz" height="50" width="50" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto"> <!-- Aligns links to the right -->
-                    <a class="nav-link" href="./Home.html">Home</a>
-                    <a class="nav-link" href="./Services.html">Services</a>
-                    <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Careers
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Job Seekers</a></li>
-                            <li><a class="dropdown-item" href="#">Career Opportunities</a></li>
-                        </ul>
-                    </div>
-                    <a class="nav-link" href="./Contactus.html" target="_self">Contact Us</a>
-                </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./Assets/FuturemindzLogo.svg"
+            alt="Futuremindz"
+            height="50"
+            width="50"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <!-- Aligns links to the right -->
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="./Services.html">Services</a>
+
+            <div class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Careers
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./JobSeeker.html"
+                    >Job Seekers</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Opportunity.html"
+                    >Career Opportunities</a
+                  >
+                </li>
+              </ul>
             </div>
+            <a class="nav-link" href="./Contactus.html" target="_self"
+              >Contact Us</a
+            >
+          </div>
         </div>
+      </div>
     </nav>
 
     <h1>SERVICES</h1>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/kisspng-workday-inc-cloud-computing-human-resource-manag-human-resource-5acbc244cc6983.6674883415233029808373-removebg-preview.png" alt="Workday">
-        <div>
-            <h2>WORKDAY</h2>
-            <p>Futuremindz consultants are proven industry experts who can bring best practices knowledge and subject matter expertise to your full-cycle Workday Implementation or post-production support projects. Most of them have worked in multiple successful implementation projects for various Workday HCM and Financial modules. Trust us with your Workday needs today!</p>
-        </div>
+      <img src="./Assets/workday.png" alt="Workday" />
+      <div>
+        <h2>WORKDAY</h2>
+        <p>
+          Futuremindz consultants are proven industry experts who can bring best
+          practices knowledge and subject matter expertise to your full-cycle
+          Workday Implementation or post-production support projects. Most of
+          them have worked in multiple successful implementation projects for
+          various Workday HCM and Financial modules. Trust us with your Workday
+          needs today!
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/aws.png" alt="AWS">
-        <div>
-            <h2>AWS</h2>
-            <p>Amazon Web Services (AWS) is a cloud-based platform that provides businesses across a wide range of industries with the tools for data storage, migration, analytics and management. AWS provides superior scalability, cost-effectiveness and top-notch information security. Our consultants bring with them years of proven software expertise, certification and the discipline to deploy an AWS project to successful completion and maintenance.</p>
-        </div>
+      <img src="./Assets/AWS.png" alt="AWS" />
+      <div>
+        <h2>AWS</h2>
+        <p>
+          Amazon Web Services (AWS) is a cloud-based platform that provides
+          businesses across a wide range of industries with the tools for data
+          storage, migration, analytics and management. AWS provides superior
+          scalability, cost-effectiveness and top-notch information security.
+          Our consultants bring with them years of proven software expertise,
+          certification and the discipline to deploy an AWS project to
+          successful completion and maintenance.
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/images.jpeg" alt="Data Science">
-        <div>
-            <h2>Data Science</h2>
-            <p>The demand for data practitioners has increased exponentially in the last decade. Data scientists are widely regarded as huge assets to any organization. Our consultants have knowledge and expertise in drawing actionable metrics from vast amounts of data. You can rely on us to redefine your organization’s data needs.</p>
-        </div>
+      <img src="./Assets/datascience.jpg" alt="Data Science" />
+      <div>
+        <h2>Data Science</h2>
+        <p>
+          The demand for data practitioners has increased exponentially in the
+          last decade. Data scientists are widely regarded as huge assets to any
+          organization. Our consultants have knowledge and expertise in drawing
+          actionable metrics from vast amounts of data. You can rely on us to
+          redefine your organization’s data needs.
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/python-programming-language.png" alt="Python">
-        <div>
-            <h2>Python</h2>
-            <p>Our consultants are the ultimate industry experts who can help you with all your Python programming needs. With Futuremindz, we’ll provide you a dedicated team of experts for your project. They’ll work with you through consultation, development, reporting, delivery and updates to ensure that your project remains scalable and easy to use.</p>
-        </div>
+      <img src="./Assets/python.jpg" alt="Python" />
+      <div>
+        <h2>Python</h2>
+        <p>
+          Our consultants are the ultimate industry experts who can help you
+          with all your Python programming needs. With Futuremindz, we’ll
+          provide you a dedicated team of experts for your project. They’ll work
+          with you through consultation, development, reporting, delivery and
+          updates to ensure that your project remains scalable and easy to use.
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/DevOps-infinity-wheel_SIMPLE.png" alt="DevOps">
-        <div>
-            <h2>DevOps</h2>
-            <p>The demand for data practitioners has increased exponentially in the last decade. Data scientists are widely regarded as huge assets to any organization. Our consultants have knowledge and expertise in drawing actionable metrics from vast amounts of data. You can rely on us to redefine your organization’s data needs.</p>
-        </div>
+      <img src="./Assets/devops.jpg" alt="DevOps" />
+      <div>
+        <h2>DevOps</h2>
+        <p>
+          The demand for data practitioners has increased exponentially in the
+          last decade. Data scientists are widely regarded as huge assets to any
+          organization. Our consultants have knowledge and expertise in drawing
+          actionable metrics from vast amounts of data. You can rely on us to
+          redefine your organization’s data needs.
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/Screenshot_2022-03-28_at_11.22.18_AM-removebg-preview.png" alt="Business Analysis">
-        <div>
-            <h2>Business Analysis</h2>
-            <p>Our team has skilled Business Analysts well versed in the IIBA BABOK. They also have industry specializations in healthcare, pharmacy, financial and insurance services. Our Business Analysts are skilled in core Business Analysis Architecture and design disciplines who work with you to understand and define your business goals to derive meaningful requirements to further your corporate strategy.</p>
-        </div>
+      <img src="./Assets/Business_Analyst.jpg" alt="Business Analysis" />
+      <div>
+        <h2>Business Analysis</h2>
+        <p>
+          Our team has skilled Business Analysts well versed in the IIBA BABOK.
+          They also have industry specializations in healthcare, pharmacy,
+          financial and insurance services. Our Business Analysts are skilled in
+          core Business Analysis Architecture and design disciplines who work
+          with you to understand and define your business goals to derive
+          meaningful requirements to further your corporate strategy.
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/Salesforce.com_logo.svg_.png" alt="Salesforce">
-        <div>
-            <h2>Salesforce</h2>
-            <p>Our Salesforce admins and developers are certified and industry proven – guaranteed to take any Salesforce challenge and turn it into a success story!</p>
-        </div>
+      <img src="./Assets/salesforce.png" alt="Salesforce" />
+      <div>
+        <h2>Salesforce</h2>
+        <p>
+          Our Salesforce admins and developers are certified and industry proven
+          – guaranteed to take any Salesforce challenge and turn it into a
+          success story!
+        </p>
+      </div>
     </div>
 
     <div class="service">
-        <img src="https://futuremindz.com/wp-content/uploads/2022/03/download-1.png" alt="Java">
-        <div>
-            <h2>Java</h2>
-            <p>Our consultants are able to analyze and design scalable Java applications. We help organizations deliver their applications on time, every time! Our developers and architects come with unparalleled expertise and are the best in class!</p>
-        </div>
+      <img src="./Assets/java.jpg" alt="Java" />
+      <div>
+        <h2>Java</h2>
+        <p>
+          Our consultants are able to analyze and design scalable Java
+          applications. We help organizations deliver their applications on
+          time, every time! Our developers and architects come with unparalleled
+          expertise and are the best in class!
+        </p>
+      </div>
     </div>
 
-    <h2 style="text-align: center;">Find a top-quality, specialized consultant today.</h2>
+    <h2 style="text-align: center">
+      Find a top-quality, specialized consultant today.
+    </h2>
 
     <footer class="bg-body-tertiary text-center text-lg-start mt-auto">
-        <div class="container d-flex justify-content-between align-items-center py-3">
-            <a class="navbar-brand" href="#">
-                <img src="./Assets/FuturemindzLogo.svg" alt="Futuremindz" height="50" width="50" class="d-inline-block align-text-top">
-            </a>
-            <div class="text-end">
-                <p class="mb-0">All rights reserved &copy; 2024 Futuremindz</p>
-            </div>
+      <div
+        class="container d-flex justify-content-between align-items-center py-3"
+      >
+        <a class="navbar-brand" href="#">
+          <img
+            src="./Assets/FuturemindzLogo.svg"
+            alt="Futuremindz"
+            height="50"
+            width="50"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <div class="text-end">
+          <p class="mb-0">All rights reserved &copy; 2024 Futuremindz</p>
         </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>

@@ -264,8 +264,8 @@ body {
 }
 
 .background-image {
-    background-image: url('http://www.futuremindz.com/wp-content/uploads/2022/03/pavan-trikutam-71CjSSB83Wo-unsplash-scaled.jpg'); /* Background image */
-    background-size: contain;
+    background-image: url('./Assets/contactus.jpg'); /* Background image */
+    background-size: cover;
     height: 500px;
     display: flex;
     justify-content: center;
@@ -364,3 +364,82 @@ button {
 .hidden {
     display: none;
 }
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack nav items vertically */
+        padding: 10px; /* Reduced padding */
+    }
+
+    main {
+        flex-direction: column; /* Stack main sections vertically */
+        padding: 32px; /* Reduced padding */
+    }
+
+    section {
+        max-width: 90%; /* Increase width on smaller screens */
+    }
+
+    .homepage-container {
+        padding: 15px; /* Reduced padding */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Slightly smaller font */
+    }
+
+    .navbar-brand {
+        font-size: 20px; /* Slightly smaller brand size */
+    }
+
+    .form-section {
+        flex-direction: column; /* Stack form fields */
+        align-items: center; /* Center items */
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack rows */
+        width: 100%; /* Full width */
+    }
+
+    .form-group {
+        margin-right: 0; /* Remove right margin */
+        width: 100%; /* Full width for inputs */
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    nav {
+        padding: 5px; /* Further reduce padding */
+    }
+
+    h1 {
+        font-size: 22px; /* Smaller heading size */
+    }
+
+    .description h5 {
+        font-size: 16px; /* Smaller font size */
+    }
+
+    button {
+        padding: 8px; /* Reduced padding */
+        font-size: 14px; /* Smaller button text */
+    }
+
+    .text-box1, .text-box2 {
+        padding: 30px; /* Reduced padding */
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .flex-container {
+        flex-direction: column; /* Stack flex items */
+        gap: 20px; /* Reduced gap */
+    }
+
+    .message-box {
+        font-size: 14px; /* Smaller message box font */
+    }
+}
+

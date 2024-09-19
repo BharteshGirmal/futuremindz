@@ -1,425 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FutureMindz - Careers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./ProjectStyles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./ProjectStyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
+      body {
+        font-family: inherit;
+        background-color: inherit;
+        padding: 20px;
+        height: auto;
+      }
+      .center-container {
+        display: flex;
+        justify-content: center; /* Center the job listings */
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center items */
+        height: auto;
+      }
+      .job-listing {
+        display: none; /* Initially hidden */
+        padding: 15px;
+        margin: 10px 10px; /* Left and right margin */
+        width: 100%; /* Full width for proper centering */
+        max-width: 1000px; /* Set a maximum width */
+        height: auto; /* Set a uniform height */
+      }
+      .position-title {
+        font-weight: bold;
+        font-size: 1.5em;
+        color: #007bff;
+      }
+      .details {
+        margin: 5px 0;
+        color: #555;
+      }
+      .salary-tag,
+      .profession-tag {
+        padding: 6px 20px;
+        font-size: 13px;
+        border-radius: 27px;
+        margin-right: 10px; /* Space between tags */
+        color: white;
+        cursor: pointer;
+      }
+      .salary-tag {
+        background-color: #2b93ff; /* Dark blue for salary tag */
+      }
+      .profession-tag {
+        background-color: darkgreen; /* Dark green for profession tag */
+      }
+      .dummy-photo {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        overflow: hidden; /* Ensure the image doesn't overflow */
+        border: 1px solid #ccc; /* Optional: Light border for the photo container */
+        border-radius: 8px; /* Optional: Rounded corners for the photo container */
+      }
+
+      .dummy-photo img {
+        width: 100%; /* Make the image fill the container */
+        height: 100%; /* Ensure the image fits the height */
+        object-fit: contain; /* Maintain aspect ratio while covering the area */
+      }
+
+      .job-container {
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: flex-start; /* Align items to the start */
+        margin: 10px 0; /* Margin between job containers */
+        padding-bottom: 20px; /* Bottom padding for each job container */
+        border-radius: 10px;
+        padding: 5px; /* Corrected padding syntax */
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Darker shadow effect */
+      }
+
+      .location-icon {
+        color: #007bff; /* Icon color */
+        margin-right: 5px; /* Space between icon and text */
+      }
+      .button-container {
+        display: flex;
+        align-items: center; /* Center items vertically */
+        justify-content: flex-start; /* Align items to the left */
+        margin-left: 16%;
+        margin-right: 10%; /* Minimal margin on the sides */
+      }
+
+      .button-container button {
+        margin-right: 10px; /* Space between buttons */
+        background-color: white; /* White background for buttons */
+        border: 1px solid lightgray; /* Light border for buttons */
+        color: #0056b3; /* Dark blue text */
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+        height: 40px; /* Height of the buttons */
+        width: 150px; /* Width of the buttons */
+        cursor: pointer; /* Pointer cursor on hover */
+      }
+
+      .button-container button:hover,
+      .button-container button:active {
+        background-color: black; /* Black background on hover and click */
+        color: white; /* White text on hover and click */
+      }
+
+      .button-container button:focus {
+        outline: none; /* Remove outline on focus */
+      }
+
+      .button-container button:last-child {
+        margin-right: 0; /* Remove margin from the last button */
+      }
+
+      /* Tablet Styles */
+      @media (max-width: 768px) {
         body {
-            font-family: inherit;
-            background-color: inherit;
-            padding: 20px;
-            height: auto;
+          padding: 10px; /* Reduce padding on body */
         }
+
         .center-container {
-            display: flex;
-            justify-content: center; /* Center the job listings */
-            flex-direction: column; /* Stack vertically */
-            align-items: center; /* Center items */
-            height: auto;
+          align-items: center; /* Center items */
+          padding: 0; /* Remove extra padding */
         }
+
         .job-listing {
-            display: none; /* Initially hidden */
-            padding: 15px;
-            margin: 10px 10px; /* Left and right margin */
-            width: 100%; /* Full width for proper centering */
-            max-width: 1000px; /* Set a maximum width */
-            height: auto; /* Set a uniform height */
+          padding: 10px; /* Reduced padding */
+          margin: 10px 0; /* Adjust margins */
         }
+
         .position-title {
-            font-weight: bold;
-            font-size: 1.5em;
-            color: #007bff;
+          font-size: 1.3em; /* Smaller title size */
         }
-        .details {
-            margin: 5px 0;
-            color: #555;
-        }
-        .salary-tag, .profession-tag {
-            padding: 6px 20px;
-            font-size: 13px;
-            border-radius: 27px;
-            margin-right: 10px;/* Space between tags */
-            color: white;
-            cursor: pointer;
-        }
-        .salary-tag {
-            background-color: #2b93ff ; /* Dark blue for salary tag */
-        }
+
+        .salary-tag,
         .profession-tag {
-            background-color: darkgreen; /* Dark green for profession tag */
+          font-size: 12px; /* Smaller font size for tags */
+          padding: 5px 15px; /* Reduced padding */
         }
+
         .dummy-photo {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    overflow: hidden; /* Ensure the image doesn't overflow */
-    border: 1px solid #ccc; /* Optional: Light border for the photo container */
-    border-radius: 8px; /* Optional: Rounded corners for the photo container */
-}
-
-.dummy-photo img {
-    width: 100%; /* Make the image fill the container */
-    height: 100%; /* Ensure the image fits the height */
-    object-fit: contain; /* Maintain aspect ratio while covering the area */
-}
-
-.job-container {
-    display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: flex-start; /* Align items to the start */
-    margin: 10px 0; /* Margin between job containers */
-    padding-bottom: 20px; /* Bottom padding for each job container */
-    border-radius: 10px;
-    padding: 5px; /* Corrected padding syntax */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Darker shadow effect */
-}
-
-
-        .location-icon {
-            color: #007bff; /* Icon color */
-            margin-right: 5px; /* Space between icon and text */
+          width: 200px; /* Adjusted width for smaller screens */
+          height: 200px; /* Adjusted height */
         }
+
         .button-container {
-            display: flex;
-            align-items: center; /* Center items vertically */
-            justify-content: flex-start; /* Align items to the left */
-            margin-left: 16%;
-            margin-right: 10%; /* Minimal margin on the sides */
+          margin-left: 5%; /* Reduced side margins */
+          margin-right: 5%; /* Reduced side margins */
         }
 
         .button-container button {
-            margin-right: 10px; /* Space between buttons */
-            background-color: white; /* White background for buttons */
-            border: 1px solid lightgray; /* Light border for buttons */
-            color: #0056b3; /* Dark blue text */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-            height: 40px; /* Height of the buttons */
-            width: 150px; /* Width of the buttons */
-            cursor: pointer; /* Pointer cursor on hover */
+          width: 100%; /* Full width for buttons */
+          margin-bottom: 10px; /* Space between buttons */
+        }
+      }
+
+      /* Mobile Styles */
+      @media (max-width: 480px) {
+        body {
+          padding: 5px; /* Further reduce padding */
         }
 
-        .button-container button:hover,
-        .button-container button:active {
-            background-color: black; /* Black background on hover and click */
-            color: white; /* White text on hover and click */
+        .position-title {
+          font-size: 1.2em; /* Smaller title size */
         }
 
-        .button-container button:focus {
-            outline: none; /* Remove outline on focus */
+        .salary-tag,
+        .profession-tag {
+          font-size: 11px; /* Further reduce font size for tags */
+          padding: 4px 10px; /* Further reduced padding */
         }
 
-        .button-container button:last-child {
-            margin-right: 0; /* Remove margin from the last button */
+        .dummy-photo {
+          width: 150px; /* Smaller width */
+          height: 150px; /* Smaller height */
         }
 
+        .button-container {
+          flex-direction: column; /* Stack buttons vertically */
+          margin-left: 0; /* Remove left margin */
+          margin-right: 0; /* Remove right margin */
+        }
 
-
+        .button-container button {
+          width: 100%; /* Full width for mobile */
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="./Assets/FuturemindzLogo.svg" alt="Futuremindz" height="50" width="50" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="./Home.html">Home</a>
-                    <a class="nav-link active" href="./Services.html">Services</a>
-                    <a class="nav-link" href="./Contactus.html">Contact Us</a>
-                </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./Assets/FuturemindzLogo.svg"
+            alt="Futuremindz"
+            height="50"
+            width="50"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <!-- Aligns links to the right -->
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="./Services.html">Services</a>
+
+            <div class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Careers
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./JobSeeker.html"
+                    >Job Seekers</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="./Opportunity.html"
+                    >Career Opportunities</a
+                  >
+                </li>
+              </ul>
             </div>
+            <a class="nav-link" href="./Contactus.html" target="_self"
+              >Contact Us</a
+            >
+          </div>
         </div>
+      </div>
     </nav>
 
     <h1 class="text-center">Join Us</h1>
     <div class="button-container mb-4">
-        <button  onclick="toggleJobs('group1')">List Date</button>
-        <button  onclick="toggleJobs('group2')">Last Update</button>
-        <button  onclick="toggleJobs('group3')">Listing ID</button>
+      <button onclick="toggleJobs('group1')">List Date</button>
+      <button onclick="toggleJobs('group2')">Last Update</button>
+      <button onclick="toggleJobs('group3')">Listing ID</button>
     </div>
-    
 
     <div class="center-container">
-        <div id="group1" class="job-listing" style="display: block;">
-            <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWtYohdDTG_yWoaiW7DPcLXlR40tJQEEkI_A&s" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">NETWORK ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
+      <div id="group1" class="job-listing" style="display: block">
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/datascience.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">NETWORK ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">NETWORK ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Los Angeles
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Madrid
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> New York
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Paris
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Rome
-                        </span>
-                    </div>
-                </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">DATABASE ADMINISTRATORS</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">SOFTWARE ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
-            </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">Software Developer – Paramus, NJ and various unanticipated US locations</div>
-                    <div class="details">Job Overview: Design/develop software systems using UNIX/SQL/Oracle/PLSQL/Java/C# etc. Testing/validation and programming. Travel/relocate ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$142,563</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> NJ
-                        </span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/java.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">NETWORK ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Los Angeles
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Madrid
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> New York
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Paris
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Rome
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/workday.png" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">DATABASE ADMINISTRATORS</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/python.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">SOFTWARE ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/salesforce.png" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">
+              Software Developer – Paramus, NJ and various unanticipated US
+              locations
+            </div>
+            <div class="details">
+              Job Overview: Design/develop software systems using
+              UNIX/SQL/Oracle/PLSQL/Java/C# etc. Testing/validation and
+              programming. Travel/relocate ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$142,563</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> NJ
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div id="group2" class="job-listing">
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">NETWORK ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
+      <div id="group2" class="job-listing">
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/workday.png" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">NETWORK ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">SOFTWARE ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                    </div>
-                </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">NETWORK ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Los Angeles
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Madrid
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> New York
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Paris
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Rome
-                        </span>
-                    </div>
-                </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
             </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">DATABASE ADMINISTRATORS</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
-            </div>
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">Software Developer – Paramus, NJ and various unanticipated US locations</div>
-                    <div class="details">Job Overview: Design/develop software systems using UNIX/SQL/Oracle/PLSQL/Java/C# etc. Testing/validation and programming. Travel/relocate ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$142,563</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> NJ
-                        </span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/python.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">SOFTWARE ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/java.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">NETWORK ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Los Angeles
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Madrid
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> New York
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Paris
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Rome
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/salesforce.png" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">DATABASE ADMINISTRATORS</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/python.jpg" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">
+              Software Developer – Paramus, NJ and various unanticipated US
+              locations
+            </div>
+            <div class="details">
+              Job Overview: Design/develop software systems using
+              UNIX/SQL/Oracle/PLSQL/Java/C# etc. Testing/validation and
+              programming. Travel/relocate ...
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$142,563</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> NJ
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div id="group3" class="job-listing">
-           <div class="job-container">
-                <span class="dummy-photo">
-                    <img src="./Assets/FuturemindzLogo.svg" alt="Profile Photo">
-                </span>
-                <div>
-                    <div class="position-title">SOFTWARE ENGINEER</div>
-                    <div class="details">Design, Install and configure LAN, WAN management, Internet and network security and ...</div>
-                    <div class="d-flex align-items-center">
-                        <div class="salary-tag">$3,222 - $3,222</div>
-                        <div class="profession-tag">IT</div>
-                    </div>
-                    <div class="details">
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> Florida
-                        </span>
-                        <span>
-                            <i class="fas fa-map-marker-alt location-icon"></i> London
-                        </span>
-                    </div>
-                </div>
+      <div id="group3" class="job-listing">
+        <div class="job-container">
+          <span class="dummy-photo">
+            <img src="./Assets/salesforce.png" alt="Profile Photo" />
+          </span>
+          <div>
+            <div class="position-title">SOFTWARE ENGINEER</div>
+            <div class="details">
+              Design, Install and configure LAN, WAN management, Internet and
+              network security and ...
             </div>
+            <div class="d-flex align-items-center">
+              <div class="salary-tag">$3,222 - $3,222</div>
+              <div class="profession-tag">IT</div>
+            </div>
+            <div class="details">
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> Florida
+              </span>
+              <span>
+                <i class="fas fa-map-marker-alt location-icon"></i> London
+              </span>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script>
-        function toggleJobs(group) {
-            const jobGroups = document.querySelectorAll('.job-listing');
-            jobGroups.forEach(g => g.style.display = 'none'); // Hide all groups
-            document.getElementById(group).style.display = 'block'; // Show selected group
-        }
+      function toggleJobs(group) {
+        const jobGroups = document.querySelectorAll(".job-listing");
+        jobGroups.forEach((g) => (g.style.display = "none")); // Hide all groups
+        document.getElementById(group).style.display = "block"; // Show selected group
+      }
     </script>
 
     <footer class="bg-body-tertiary text-center text-lg-start mt-auto">
-        <div class="container d-flex justify-content-between align-items-center py-3">
-            <a class="navbar-brand" href="index.html">
-                <img src="./Assets/FuturemindzLogo.svg" alt="Futuremindz" height="50" width="50" class="d-inline-block align-text-top">
-            </a>
-            <div class="text-end">
-                <p class="mb-0">All rights reserved &copy; 2024 Futuremindz</p>
-            </div>
+      <div
+        class="container d-flex justify-content-between align-items-center py-3"
+      >
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="./Assets/FuturemindzLogo.svg"
+            alt="Futuremindz"
+            height="50"
+            width="50"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <div class="text-end">
+          <p class="mb-0">All rights reserved &copy; 2024 Futuremindz</p>
         </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
