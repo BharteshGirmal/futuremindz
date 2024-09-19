@@ -1,3 +1,10 @@
+/* Base Styles */
+body {
+    font-family: "Roboto", "Sans-serif";
+    margin: 0;
+    padding: 0;
+}
+
 nav {
     display: flex;
     justify-content: center;
@@ -6,9 +13,6 @@ nav {
     padding: 16px; /* Added padding for better spacing */
 }
 
-body{
-    font-family: "Roboto", "Sans-serif";
-}
 main {
     display: flex;
     justify-content: space-between; /* Space out sections */
@@ -31,18 +35,21 @@ button {
     font-size: 16px;
     font-weight: 500;
     background-color: #015A9C;
-    padding: 15px 30px 15px 30px;
+    padding: 15px 30px; /* Consistent padding */
     color: white;
 }
 
-.mylabel{
+.mylabel {
+    display: flex;
+    text-align: center;
+    justify-content: left;
     font-style: normal;
     font-weight: bolder;
     font-size: medium;
 }
 
-h1{
-    color:#033053 ;
+h1 {
+    color: #033053;
     font-weight: bolder;
 }
 
@@ -52,12 +59,11 @@ h1{
     align-items: center;
 }
 
-.section1_img{
+.section1_img {
     width: 100%; /* Make image responsive */
     max-width: 700px; /* Limit maximum width */
     height: 700px; /* Maintain aspect ratio */
     border-bottom-left-radius: 200px; /* Optional: Rounded corners */
-    padding-right: -10px;
 }
 
 img {
@@ -66,7 +72,6 @@ img {
     height: auto; /* Maintain aspect ratio */
     border-radius: 10px; /* Optional: Rounded corners */
 }
-
 
 .navbar {
     margin-bottom: 20px; /* Adds space below the navbar */
@@ -92,9 +97,10 @@ img {
     background-color: #cad3cb; /* Change background on hover */
 }
 
-.Technology-Spotlight{
+.Technology-Spotlight {
     background-color: #C9DCEA;
 }
+
 .checkbox-container {
     color: white; /* Text color */
 }
@@ -139,22 +145,6 @@ a {
     margin: 0 10px; /* Space around the line */
 }
 
-.divider-about {
-    display: flex;
-    align-items: center; /* Center the line and text */
-    width: 50%; /* Full width */
-    margin-bottom: 20px; /* Space below the divider */
-}
-
-.divider-about-separator {
-    flex-grow: 1; /* Make the line grow */
-    height: 2px; /* Thickness of the line */
-    background-color: #015A9C; /* Line color */
-    margin: 0 10px; /* Space around the line */
-}
-
-
-
 .description {
     text-align: start; /* Center the text */
     margin-bottom: 20px; /* Space below the description */
@@ -166,13 +156,6 @@ a {
     font-size: 18px; /* Adjust font size if needed */
     color: #333; /* Adjust text color for better contrast */
 }
-.checkbox-container {
-    display: flex; /* Flex container for checkbox groups */
-    justify-content: space-between; /* Space between checkbox groups */
-    width: 100%; /* Full width */
-    max-width: 600px; /* Limit maximum width */
-    margin-bottom: 20px; /* Space below checkbox container */
-}
 
 .checkbox-group {
     display: flex;
@@ -182,27 +165,6 @@ a {
 .checkbox-group label {
     cursor: default; /* Clear indication of uncheckable */
     margin-bottom: 8px; /* Space between checkboxes */
-}
-
-#img-section {
-    display: flex;
-    justify-content: center; /* Center the image */
-    align-items: center;
-}
-
-img {
-    width: 100%; /* Responsive image */
-    max-width: 500px; /* Maximum width */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners */
-}
-
-button {
-    background-color: #015A9C; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Padding for button */
-    cursor: pointer; /* Pointer cursor on hover */
 }
 
 #home-section {
@@ -235,43 +197,6 @@ button {
     margin-bottom: 20px; /* Space below paragraph */
 }
 
-
-.navbar-nav .nav-link {
-    font-size: 18px; /* Increase font size */
-    padding: 10px 15px; /* Adjust padding for better click area */
-}
-
-.navbar-brand {
-    font-size: 24px; /* Increase the size of the brand/logo text, if any */
-}
-
-.dropdown-item {
-    font-size: 16px; /* Increase the size of dropdown items */
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.contact-header {
-    text-align: center;
-    font-weight: bold;
-    font-size: 2em;
-    margin: 40px 0;
-}
-
-.background-image {
-    background-image: url('./Assets/contactus.jpg'); /* Background image */
-    background-size: cover;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .flex-container {
     display: flex;
     justify-content: center;
@@ -284,7 +209,7 @@ body {
     font-size: 22px;
     font-weight: 500;
     background-color: #015A9C;
-    padding: 55px 55px 55px 55px;
+    padding: 55px; /* Uniform padding */
     color: white;
 }
 
@@ -293,7 +218,7 @@ body {
     font-size: 22px;
     font-weight: 500;
     background-color: #FE8943;
-    padding: 55px 55px 55px 55px;
+    padding: 55px; /* Uniform padding */
     color: white;
 }
 
@@ -305,6 +230,22 @@ body {
     padding: 40px;
 }
 
+.background-image {
+    background-image: url('./Assets/contactus.jpg'); /* Background image */
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
 .image-container img {
     max-width: 300px;
     height: auto;
@@ -332,7 +273,8 @@ body {
     margin-right: 0; /* No margin for the last field */
 }
 
-input, textarea {
+input,
+textarea {
     margin-bottom: 5px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -340,18 +282,17 @@ input, textarea {
     width: 100%; /* Full width */
 }
 
-
 button {
     padding: 10px;
-    background-color: #015A9C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: #015A9C; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
 }
 
-.sendmsg{
-   font-weight: lighter;
+.sendmsg {
+    font-weight: lighter;
 }
 
 .message-box {
@@ -362,84 +303,98 @@ button {
 }
 
 .hidden {
-    display: none;
+    display: none; /* Hidden elements */
 }
 
-/* Tablet Styles */
+/* Media Queries */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Stack nav items vertically */
-        padding: 10px; /* Reduced padding */
+        flex-direction: column; /* Stack navbar items */
+        padding: 10px; /* Less padding */
     }
 
     main {
-        flex-direction: column; /* Stack main sections vertically */
-        padding: 32px; /* Reduced padding */
+        flex-direction: column; /* Stack main content */
+        padding: 20px; /* Reduced padding */
+        height: auto; /* Adjust height for smaller screens */
     }
 
     section {
-        max-width: 90%; /* Increase width on smaller screens */
+        max-width: 100%; /* Full width on smaller screens */
+        margin: 0 auto; /* Center align */
     }
 
-    .homepage-container {
-        padding: 15px; /* Reduced padding */
+    #img-section {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center images */
     }
 
-    .navbar-nav .nav-link {
-        font-size: 16px; /* Slightly smaller font */
-    }
-
-    .navbar-brand {
-        font-size: 20px; /* Slightly smaller brand size */
-    }
-
-    .form-section {
-        flex-direction: column; /* Stack form fields */
-        align-items: center; /* Center items */
-    }
-
-    .form-row {
-        flex-direction: column; /* Stack rows */
-        width: 100%; /* Full width */
-    }
-
-    .form-group {
-        margin-right: 0; /* Remove right margin */
-        width: 100%; /* Full width for inputs */
-    }
-}
-
-/* Mobile Styles */
-@media (max-width: 480px) {
-    nav {
-        padding: 5px; /* Further reduce padding */
+    .section1_img {
+        max-width: 100%; /* Full width for small screens */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 20px; /* Space below the image */
     }
 
     h1 {
-        font-size: 22px; /* Smaller heading size */
+        font-size: 22px; /* Smaller heading */
     }
 
     .description h5 {
-        font-size: 16px; /* Smaller font size */
+        font-size: 16px; /* Smaller description text */
     }
 
     button {
-        padding: 8px; /* Reduced padding */
+        padding: 8px; /* Smaller button padding */
         font-size: 14px; /* Smaller button text */
-    }
-
-    .text-box1, .text-box2 {
-        padding: 30px; /* Reduced padding */
-        font-size: 18px; /* Smaller font size */
     }
 
     .flex-container {
         flex-direction: column; /* Stack flex items */
-        gap: 20px; /* Reduced gap */
+        gap: 20px; /* Space between items */
     }
 
-    .message-box {
-        font-size: 14px; /* Smaller message box font */
+    .form-section {
+        flex-direction: column; /* Stack form fields */
+        padding: 20px; /* Reduced padding */
+        gap: 20px; /* Increased gap */
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack fields vertically */
+    }
+
+    .form-group {
+        margin-right: 0; /* No right margin */
+        margin-bottom: 15px; /* Space between fields */
+    }
+
+    .form-group:last-child {
+        margin-bottom: 0; /* No margin for the last field */
     }
 }
 
+@media (max-width: 480px) {
+    nav {
+        padding: 5px; /* Less padding */
+        display: flex; /* Use flexbox for positioning */
+        justify-content: space-between; /* Space between brand and toggler */
+        align-items: center; /* Center items vertically */
+        position: relative; /* Ensure positioning works */
+    }
+
+    .navbar-toggler {
+        margin-left: auto; /* Align the toggler button to the right */
+    }
+
+    #img-section {
+        margin-top: 20px; /* Space above the SVG section */
+        display: flex;
+        flex-direction: column; /* Ensure images stack vertically */
+        align-items: center; /* Center images horizontally */
+    }
+
+    .section1_img {
+        max-width: 100%; /* Full width for small screens */
+        margin-bottom: 20px; /* Space below the image */
+    }
+}

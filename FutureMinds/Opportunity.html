@@ -88,6 +88,16 @@
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Darker shadow effect */
       }
 
+      .job-container-toggle {
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: flex-start; /* Align items to the start */
+        padding-bottom: 20px; /* Bottom padding for each job container */
+        padding: 5px; /* Corrected padding syntax */
+        border: 1px solid lightgray;
+        margin-left: 17%; /* Margin between job containers */
+        margin-right: 17%; /* Margin between job containers */
+      }
       .location-icon {
         color: #007bff; /* Icon color */
         margin-right: 5px; /* Space between icon and text */
@@ -96,35 +106,30 @@
         display: flex;
         align-items: center; /* Center items vertically */
         justify-content: flex-start; /* Align items to the left */
-        margin-left: 16%;
-        margin-right: 10%; /* Minimal margin on the sides */
+        gap: 10px; /* Space between buttons */
       }
 
       .button-container button {
-        margin-right: 10px; /* Space between buttons */
         background-color: white; /* White background for buttons */
         border: 1px solid lightgray; /* Light border for buttons */
         color: #0056b3; /* Dark blue text */
-        transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+        transition: background-color 0.3s, color 0.3s, outline 0.3s; /* Smooth transition for hover effects */
         height: 40px; /* Height of the buttons */
         width: 150px; /* Width of the buttons */
         cursor: pointer; /* Pointer cursor on hover */
+        outline: 2px solid transparent; /* Default outline */
       }
 
       .button-container button:hover,
       .button-container button:active {
         background-color: black; /* Black background on hover and click */
         color: white; /* White text on hover and click */
+        outline: 2px solid white; /* Outline color on hover and click */
       }
 
       .button-container button:focus {
-        outline: none; /* Remove outline on focus */
+        outline: 2px solid #0056b3; /* Outline color when focused */
       }
-
-      .button-container button:last-child {
-        margin-right: 0; /* Remove margin from the last button */
-      }
-
       /* Tablet Styles */
       @media (max-width: 768px) {
         body {
@@ -226,7 +231,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
             <!-- Aligns links to the right -->
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="./Home.html">Home</a>
             <a class="nav-link" href="./Services.html">Services</a>
 
             <div class="nav-item dropdown">
@@ -261,10 +266,12 @@
     </nav>
 
     <h1 class="text-center">Join Us</h1>
-    <div class="button-container mb-4">
-      <button onclick="toggleJobs('group1')">List Date</button>
-      <button onclick="toggleJobs('group2')">Last Update</button>
-      <button onclick="toggleJobs('group3')">Listing ID</button>
+    <div class="job-container-toggle">
+      <div class="button-container">
+        <button onclick="toggleJobs('group1')">List Date</button>
+        <button onclick="toggleJobs('group2')">Last Update</button>
+        <button onclick="toggleJobs('group3')">Listing ID</button>
+      </div>
     </div>
 
     <div class="center-container">
